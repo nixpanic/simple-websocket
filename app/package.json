@@ -1,0 +1,26 @@
+{
+  "name": "simple-websocket",
+  "version": "0.0.1",
+  "description": "Simple WebSocket app for loadbalancer/proxy testing.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nixpanic/simple-websocket.git"
+  },
+  "keywords": [
+    "WebSocket"
+  ],
+  "author": "Niels de Vos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nixpanic/simple-websocket/issues"
+  },
+  "homepage": "https://github.com/nixpanic/simple-websocket#readme",
+  "dependencies": {
+    "ws": "^8.17.1"
+  }
+}

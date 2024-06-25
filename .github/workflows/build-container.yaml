@@ -1,0 +1,41 @@
+---
+name: Publish draw container-image on ghcr.io
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  push_to_registry:
+    name: Publish container-image on ghcr.io
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Build the container-image
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: ghcr.io/${{ github.repository_owner }}/simple-websocket
+          tags: latest
+          containerfiles: |
+            Containerfile
+
+      - name: Push the container-image to ghcr.io
+        id: push-to-ghcr
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ghcr.io/${{ github.repository_owner }}/simple-websocket
+          tags: latest
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print image url
+        run: echo "Image pushed to ${{ steps.push-to-ghcr.outputs.registry-paths }}"
