@@ -7,6 +7,15 @@
   <!-- include scripts with timestamp to prevent caching -->
   <script>document.write("<script type='text/javascript' src='ws.js?ts="+Date.now()+"'><\/script>");</script>
 
-  <body style="font-family:courier;" />
+  <body>
+      <div id="header">
+        This page connects to the WebSocket on the server
+        <script>document.write(document.location.host)</script> and displays
+        some logs. Every 30 seconds this page sends a <i>ping</i> over the
+        WebSocket.
+      </div>
+      <hr />
+      <div id="log" style="font-family:courier;" />
+  </body>
 </html>
 

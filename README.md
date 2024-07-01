@@ -14,15 +14,15 @@ webserver on port 8080. The webserver provides two functions:
 
 ### Frontend
 
-The entry page when accessing the webserver on http://localhost:8080/ shows the
-raw output of a WebSocket connection. An application level `ping` (data, not a
-WebSocket keep-alive ping) is sent to the application server.
+The entry page when accessing the webserver on `http://localhost:8080/` shows
+the raw output of a WebSocket connection. An application level `ping` (data,
+not a WebSocket keep-alive ping) is sent to the application server.
 
 The implementation of the frontend is in `html/index.html` and `html/ws.js`.
 
 ### Backend
 
-On http://localhost:8080/ws the WebSocket is provided. Upon receiving a new
+On `ws://localhost:8080/ws` the WebSocket is provided. Upon receiving a new
 connection, the application server responds with a welcome message. After that,
 it just reports how many bytes were received on a message that the client sent.
 
@@ -37,5 +37,5 @@ local system like a laptop:
 podman run -ti --rm --publish=8080:8080 ghcr.io/nixpanic/simple-websocket:latest
 ```
 
-Once the container is running, visit http://localhost:8080 to check if
+Once the container is running, visit `http://localhost:8080` to check if
 everything is working.

@@ -1,5 +1,5 @@
 function log(msg) {
-    document.body.innerHTML += `${new Date()}: ${msg}<br/>`;
+    document.getElementById("log").innerHTML += `${new Date()}: ${msg}<br/>`;
 }
 
 window.addEventListener('load', () => {
@@ -11,6 +11,7 @@ window.addEventListener('load', () => {
     setTimeout(() => {
       log('sending ping');
       ws.send('ping');
+      delayedPing();
     }, 30000);
   }
 
@@ -22,7 +23,11 @@ window.addEventListener('load', () => {
   };
 
   ws.onclose = (err) => {
-     log(`WebSocket was closed with error code ${err}`);
+     log('WebSocket was closed:', err);
+  };
+
+  ws.onerror = (err) => {
+     log('WebSocket got an error:', err);
   };
 
   ws.onmessage = (res) => {
